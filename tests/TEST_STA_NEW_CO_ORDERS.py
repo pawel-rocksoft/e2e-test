@@ -1076,77 +1076,77 @@ def test_SE_order_paypal():
 
 
 
-def test_B2BEU_order():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    print(dir_path)
+# def test_B2BEU_order():
+#     dir_path = os.path.dirname(os.path.realpath(__file__))
+#     print(dir_path)
 
-    options = Options()
-    options.add_argument('--allow-running-insecure-content')
-    options.add_argument('--ignore-certificate-errors')
-    driver = webdriver.Chrome('C:\\WebDrivers\\chromedriver.exe', options = options)
-    wait = WebDriverWait(driver, 10)
+#     options = Options()
+#     options.add_argument('--allow-running-insecure-content')
+#     options.add_argument('--ignore-certificate-errors')
+#     driver = webdriver.Chrome('C:\\WebDrivers\\chromedriver.exe', options = options)
+#     wait = WebDriverWait(driver, 10)
 
-    driver.get("https://storefront:horze123@b2beu.sta.horze.io/en_GB/overreach-boots/horze-probell-boots/19764.html")
+#     driver.get("https://storefront:horze123@b2beu.sta.horze.io/en_GB/overreach-boots/horze-probell-boots/19764.html")
 
-    driver.maximize_window()
-    time.sleep(5)
+#     driver.maximize_window()
+#     time.sleep(5)
 
-    original_window = driver.current_window_handleP
-    assert len(driver.window_handles) == 1
+#     original_window = driver.current_window_handleP
+#     assert len(driver.window_handles) == 1
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
-    driver.execute_script(acceptUC)
+#     acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+#     driver.execute_script(acceptUC)
 
-    time.sleep(5)
+#     time.sleep(5)
 
-    customerID = "document.querySelector('#dwfrm_login > div:nth-child(2) > input').value='222222'"
-    driver.execute_script(customerID)
+#     customerID = "document.querySelector('#dwfrm_login > div:nth-child(2) > input').value='222222'"
+#     driver.execute_script(customerID)
 
-    password = "document.querySelector('#dwfrm_login > div:nth-child(3) > input').value='222222'"
-    driver.execute_script(password)
+#     password = "document.querySelector('#dwfrm_login > div:nth-child(3) > input').value='222222'"
+#     driver.execute_script(password)
 
-    driver.execute_script("document.querySelector('#dwfrm_login > div.row.flex-column.form-group > div.col-4 > button').click()")
+#     driver.execute_script("document.querySelector('#dwfrm_login > div.row.flex-column.form-group > div.col-4 > button').click()")
 
-    time.sleep(5)
+#     time.sleep(5)
 
-    search = "document.querySelector('body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-7 > div > form > input').value='19764'"
-    driver.execute_script(search)
-    time.sleep(4)
-    driver.execute_script("document.querySelector('body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-7 > div > form > button').click()")
+#     search = "document.querySelector('body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-7 > div > form > input').value='19764'"
+#     driver.execute_script(search)
+#     time.sleep(4)
+#     driver.execute_script("document.querySelector('body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-7 > div > form > button').click()")
                            
-    time.sleep(5)
+#     time.sleep(5)
 
-    driver.execute_script("document.querySelector('body > div.position-relative.pb-50.no-sidebar.product-grid-js > div > div > div > div.position-relative.px-15.px-sm-0.mb-60.product-list-ajax-js > div.row.loadmore-section-js > div > div > div > a > div > p.c-product-tile__info-name.c-product-tile__info-name--single-line.mb-0.font-fancy').click()")
+#     driver.execute_script("document.querySelector('body > div.position-relative.pb-50.no-sidebar.product-grid-js > div > div > div > div.position-relative.px-15.px-sm-0.mb-60.product-list-ajax-js > div.row.loadmore-section-js > div > div > div > a > div > p.c-product-tile__info-name.c-product-tile__info-name--single-line.mb-0.font-fancy').click()")
 
-    time.sleep(5)
+#     time.sleep(5)
 
-    quantity = "document.querySelector('body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.px-0.px-sm-15.pt-10 > div.c-variation-table.px-0.px-sm-20.py-20.border-bottom > div.px-15.px-sm-0.pt-20.variation-table-js > div.variation-table-content-js > div:nth-child(1) > div.col-4.font-12.font-sm-13.px-0.px-sm-15 > div > div > div > input').value='1'"
-    driver.execute_script(quantity)
+#     quantity = "document.querySelector('body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.px-0.px-sm-15.pt-10 > div.c-variation-table.px-0.px-sm-20.py-20.border-bottom > div.px-15.px-sm-0.pt-20.variation-table-js > div.variation-table-content-js > div:nth-child(1) > div.col-4.font-12.font-sm-13.px-0.px-sm-15 > div > div > div > input').value='1'"
+#     driver.execute_script(quantity)
 
-    # driver.execute_script("document.querySelector('body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.px-0.px-sm-15.pt-10 > div.c-variation-table.px-0.px-sm-20.py-20.border-bottom > div.px-15.px-sm-0.pt-20.variation-table-js > div.variation-table-content-js > div:nth-child(1) > div.col-4.font-12.font-sm-13.px-0.px-sm-15 > div > div > div > span:nth-child(5) > button').click()")
-    time.sleep(3)
-    driver.execute_script("window.scrollTo(20, document.body.scrollHeight)")
-    time.sleep(2)
-    driver.execute_script("document.querySelector('body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15 > div > button').click()")
-    time.sleep(4)
-    driver.execute_script("window.scrollTo(document.body.scrollTop, 1)")
-    time.sleep(4)
-    driver.execute_script("document.querySelector('body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a').click()")
-
-
+#     # driver.execute_script("document.querySelector('body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.px-0.px-sm-15.pt-10 > div.c-variation-table.px-0.px-sm-20.py-20.border-bottom > div.px-15.px-sm-0.pt-20.variation-table-js > div.variation-table-content-js > div:nth-child(1) > div.col-4.font-12.font-sm-13.px-0.px-sm-15 > div > div > div > span:nth-child(5) > button').click()")
+#     time.sleep(3)
+#     driver.execute_script("window.scrollTo(20, document.body.scrollHeight)")
+#     time.sleep(2)
+#     driver.execute_script("document.querySelector('body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15 > div > button').click()")
+#     time.sleep(4)
+#     driver.execute_script("window.scrollTo(document.body.scrollTop, 1)")
+#     time.sleep(4)
+#     driver.execute_script("document.querySelector('body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a').click()")
 
 
 
 
 
 
-    result = driver.find_element_by_link_text("Visa min order")
+
+
+#     result = driver.find_element_by_link_text("Visa min order")
     
-    assert result.is_displayed() == True
+#     assert result.is_displayed() == True
 
-    time.sleep(5)
+#     time.sleep(5)
 
-    driver.close()
+#     driver.close()
 
 
 
