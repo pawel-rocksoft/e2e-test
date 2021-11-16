@@ -883,7 +883,7 @@ def test_ES_order_PayPal():
 
     assert result.is_displayed() == True
 
-    time.sleep(5)
+    time.sleep(6)
 
     driver.close()   
 
