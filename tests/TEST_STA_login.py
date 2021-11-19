@@ -1,15 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.common.exceptions import NoSuchElementException
+# from selenium.webdriver.support.ui import WebDriverWait
 import time
-import pytest
+# import pytest
 import os
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import Select
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.support.ui import Select
 
 def execute_qs(driver, selector):
     script = "document.querySelector('" + selector + "').click()"
@@ -23,7 +23,7 @@ def test_DE_login():
     options.add_argument('--allow-running-insecure-content')
     options.add_argument('--ignore-certificate-errors')
     driver = webdriver.Chrome('C:\\WebDrivers\\chromedriver.exe', options = options)
-    wait = WebDriverWait(driver, 10)
+
     driver.get("https://storefront:horze123@hrzde.sta.horze.io/on/demandware.store/Sites-hrzde-Site/de_DE/Login-Form")
 
     driver.maximize_window()
@@ -45,12 +45,12 @@ def test_DE_login():
 
     driver.find_element_by_name("dwfrm_login_login").click()
     
-    time.sleep(10)
+    time.sleep(5)
 
     result = driver.find_element_by_link_text("Meine Anfragen")
 
     assert result.is_displayed() == True
 
-    time.sleep(5)
+    time.sleep(2)
 
     driver.close()

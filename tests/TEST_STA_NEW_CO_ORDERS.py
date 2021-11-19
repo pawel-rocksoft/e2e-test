@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
 
+
 def execute_qs(driver, selector):
     script = "document.querySelector('" + selector + "').click()"
     driver.execute_script(script)
