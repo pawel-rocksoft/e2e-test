@@ -9,6 +9,7 @@ import pytest
 import os
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
 
 def execute_qs(driver, selector):
     script = "document.querySelector('" + selector + "').click()"
@@ -29,14 +30,15 @@ def test_DE_order_klarna():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
-
+    
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout
     execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
@@ -83,9 +85,6 @@ def test_DE_order_klarna():
 
     driver.execute_script(buy)
 
-    # driver.find_element_by_xpath("//*[@id='page']/div/div[2]/div/div/div[7]/div/button/div/div[2]/span").click()
-
-    # driver.switch_to.default_content()
 
     time.sleep(4)
 
@@ -119,18 +118,11 @@ def test_DE_order_amazon():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
-    
-    # change color
-    # execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div > div > div > div > div:nth-child(2)")
-    
-    # driver.find_element_by_class_name("c-color-swatch color-swatch-js color-label-js").click()
-
-    # add to cart
 
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout
@@ -165,9 +157,8 @@ def test_DE_order_amazon():
 
     time.sleep(5)
 
-
     execute_qs(driver, "#a-autoid-6 > span > input")
-    #a-autoid-0 > span > input
+    
     time.sleep(5)
 
     execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
@@ -203,14 +194,16 @@ def test_DE_order_klarna_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout
     execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
@@ -293,9 +286,7 @@ def test_DE_order_klarna_paypal():
 
     driver.switch_to.window(original_window)
     
-    # time.sleep(10)
-    # execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
-    time.sleep(8)
+    time.sleep(12)
 
     result = driver.find_element_by_link_text("Meine Bestellung ansehen")
     
@@ -326,14 +317,15 @@ def test_DE_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout
     execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
@@ -371,7 +363,7 @@ def test_DE_order_paypal():
     
     time.sleep(10)
     execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
-    time.sleep(8)
+    time.sleep(12)
 
     result = driver.find_element_by_link_text("Meine Bestellung ansehen")
     
@@ -398,14 +390,15 @@ def test_NO_order_klarna_paylater():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
     execute_qs(driver, "#size-select")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
     # add to cart       
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout    
@@ -434,9 +427,6 @@ def test_NO_order_klarna_paylater():
 
     sourname = driver.find_element_by_id("billing-family_name")
     sourname.send_keys("Sikora")
-
-    # address = driver.find_element_by_id("billing-street_address")
-    # address.send_keys("Sæffleberggate 56")
 
     mobilephone = driver.find_element_by_id("billing-phone")
     mobilephone.send_keys("40 123 456")
@@ -506,14 +496,16 @@ def test_NO_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
     execute_qs(driver, "#size-select")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout
     execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
@@ -533,7 +525,7 @@ def test_NO_order_paypal():
 
     postcode.send_keys("4146")
     postcode.send_keys(Keys.RETURN)
-    time.sleep(4)
+    time.sleep(4) 
 
     address = driver.find_element_by_id("billing-street_address")
     address.send_keys("test 43")
@@ -557,10 +549,6 @@ def test_NO_order_paypal():
     driver.execute_script(buy) 
 
     time.sleep(10)
-
-    # paypal = "document.querySelector('#paypal-animation-content > div.paypal-button-container.paypal-button-layout-vertical.paypal-button-shape-rect.paypal-button-branding-branded.paypal-button-number-single.paypal-button-env-sandbox.paypal-should-focus > div').click()"
-
-    # driver.execute_script(paypal) 
    
     driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/div/div[2]/div/div/div[1]").click()
 
@@ -591,9 +579,8 @@ def test_NO_order_paypal():
 
     driver.find_element_by_id("consentButton").click()
 
+    time.sleep(12)
 
-    time.sleep(10)
-    # driver.switch_to.default_content()
     driver.switch_to.window(original_window)
     time.sleep(5)
     result = driver.find_element_by_link_text("Vis min bestilling")
@@ -621,7 +608,7 @@ def test_FI_order_klarna():
 
     time.sleep(4)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
@@ -748,14 +735,17 @@ def test_FI_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)
+
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     # go to checkout
     execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
@@ -778,14 +768,16 @@ def test_FI_order_paypal():
     postcode.send_keys("41460")
     postcode.send_keys(Keys.RETURN)
     time.sleep(4)
-
-    # driver.find_element_by_id("billing-title").click()
-    # time.sleep(2)
-    # driver.find_element_by_id("billing-title__option__herr").click()
-
-    # address = driver.find_element_by_id("billing-street_address")
-    # address.send_keys("test 43")
-
+    bsaddress = driver.find_element_by_id("billing-street_address")
+    bsaddress.send_keys("test 2") 
+    bcity = driver.find_element_by_id("billing-city")
+    bcity.send_keys("roma")
+    bname = driver.find_element_by_id("billing-given_name")
+    bname.send_keys("pawel")
+    bfamily = driver.find_element_by_id("billing-family_name")
+    bfamily.send_keys("sikora") 
+    bphone = driver.find_element_by_id("billing-phone")
+    bphone.send_keys("03 58123123")
     postcode.send_keys(Keys.RETURN)
     time.sleep(3)
     postcode.send_keys(Keys.RETURN)
@@ -839,8 +831,6 @@ def test_FI_order_paypal():
 
     driver.switch_to.window(original_window)
     
-    # time.sleep(10)
-    # execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
     time.sleep(8)
 
     result = driver.find_element_by_link_text("Katso tilauksen tiedot")
@@ -868,7 +858,7 @@ def test_AT_order_klarna():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
@@ -957,22 +947,17 @@ def test_SE_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(2)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
-    # go to checkout
-    # execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
-    # time.sleep(4)
-    # FR = driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/div/div[2]/div/div[1]/div/div/div/label[1]/div/div/div/iframe")
-    # driver.switch_to.frame(FR)
-    # PP = "document.querySelector('#paypal-animation-content > div.paypal-button-container.paypal-button-layout-vertical.paypal-button-shape-rect.paypal-button-branding-branded.paypal-button-number-single.paypal-button-env-sandbox.paypal-should-focus > div > div > img.paypal-button-logo.paypal-button-logo-paypal.paypal-button-logo-gold').click()"
-    # driver.execute_script(PP)
 
     execute_qs(driver, "body > div.navigation-desktop-js > div.c-header.header-js > div.container.d-none.d-md-block.h-100 > div > div.col-3 > div > div.dropdown.shopping-header-dropdown-js > a")
     execute_qs(driver, "body > div.l-cart__wrapper > div > div.mb-30.p-sm-30.bg-light > div > div.col-12.col-md-4.px-0.px-sm-15 > div > div:nth-child(1) > div > div > div > a.btn.btn-black.w-100.start-checkout-js")
@@ -1060,9 +1045,7 @@ def test_SE_order_paypal():
     execute_qs(driver, "#consentButton")
 
     driver.switch_to.window(original_window)
-    
-    # time.sleep(10)
-    # execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
+   
     time.sleep(8)
 
     result = driver.find_element_by_link_text("Visa min order")
@@ -1173,14 +1156,16 @@ def test_EU_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     time.sleep(4)          
     # go to checkout
@@ -1245,8 +1230,6 @@ def test_EU_order_paypal():
 
     driver.switch_to.window(original_window)
     
-    # time.sleep(10)
-    # execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
     time.sleep(8)
 
     result = driver.find_element_by_link_text("Your Orders")
@@ -1283,14 +1266,16 @@ def test_WW_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
     driver.execute_script(geopopup)
     # select size
-    execute_qs(driver, "#size-select > div")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    execute_qs(driver, "#size-select")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)    
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     time.sleep(4)          
     # go to checkout
@@ -1376,8 +1361,6 @@ def test_WW_order_paypal():
 
     driver.switch_to.window(original_window)
     
-    # time.sleep(10)
-    # execute_qs(driver, "body > div.container.my-60 > div > div.col-12.col-md-8 > div.row.justify-content-center.justify-content-sm-between.mt-30.mb-15 > div > a")
     time.sleep(8)
 
     result = driver.find_element_by_link_text("Your Orders")
@@ -1413,14 +1396,13 @@ def test_PL_order_P24():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('button:last-child').click()"
     driver.execute_script(acceptUC)
 
-    # geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
-    # driver.execute_script(geopopup)
-    # select size
     execute_qs(driver, "#size-select")
-    execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div:nth-child(7) > div > div.col-12.show-on-color-available > div.c-dropdown__wrapper.dropdown.d-none.d-md-block.mb-15.dropdown-select-size-js.show > div.c-dropdown__menu.dropdown-menu.dropdown-menu-select-size-js.show > table > tr:nth-child(1)")
+    time.sleep(2)
+    execute_qs(driver, ".dropdown-menu-select-size-js .select-size-js")
+    time.sleep(2)
     execute_qs(driver, "body > div.container.product-container-js > div.row.mt-5.mb-15.mb-sm-30 > div.col-12.col-sm-6.col-md-5.product-content-js.pl-sm-15.pl-lg-30.mt-10.mt-sm-0 > form > div.col-12.d-flex.mt-15.product-instock-section-js > div.col.px-0 > button")
     time.sleep(4)          
     # go to checkout

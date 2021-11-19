@@ -29,7 +29,7 @@ def test_DE_order_klarna():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('div > div > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
@@ -119,7 +119,7 @@ def test_DE_order_amazon():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('div > div > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
@@ -203,7 +203,7 @@ def test_DE_order_klarna_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('div > div > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
@@ -326,7 +326,7 @@ def test_DE_order_paypal():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('div > div > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
@@ -398,7 +398,7 @@ def test_NO_order_klarna_paylater():
 
     time.sleep(5)
 
-    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('#focus-lock-id > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
+    acceptUC = "document.querySelector('#usercentrics-root').shadowRoot.querySelector('div > div > div > div > div.sc-iktFfs.biTlrK > div > div > div.sc-fKFxtB.kSqpRu > div > button.sc-gsTEea.cfRmfK').click()"
     driver.execute_script(acceptUC)
 
     geopopup = "document.querySelector('body > div.c-bottom-notification.py-15.geo-banner-js.in > div > div > div > a').click()"
